@@ -1,0 +1,22 @@
+<h1>index</h1>
+<table>
+    <thead>
+        <tr>
+            <th>title</th>
+            <th>author</th>
+            <th>isbn</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @books.each do |i|%>
+        <tr>
+            <td><%= i.title%></td>
+            <td><%= i.author%></td>
+            <td><%= i.isbn%></td>
+            <td><%= link_to "edit", edit_book_path(i)%></td>
+
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+<td><%=link_to "new", new_book_path%></td>

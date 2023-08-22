@@ -1,0 +1,10 @@
+<h1>this is home</h1>
+<td><%=link_to "new", new_book_path%></td>
+<%= User.count %>
+<% if current_user %>
+<p>hello<%= current_user.email%> wellcome</p>
+<p>you are successfully sign_in</p>
+<p>user role is: <%= current_user.role %></p>
+<% else %>
+<p>you have not signed_in</p>
+<% end %>

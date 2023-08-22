@@ -1,0 +1,18 @@
+<h1>new form</h1>
+<%= form_with model: @book do |i|%>
+<div>
+    <%= i.label :title%>
+    <%= i.text_field :title%>
+</div>
+<div>
+    <%= i.label :author%>
+    <%= i.text_field :author%>
+</div>
+<div>
+    <%= i.label :ISBN%>
+    <%= i.text_field :isbn%>
+</div>
+<div>
+    <%= i.submit%>
+</div>
+<% end %>
