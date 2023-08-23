@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
+    before_action :ability, only: [:new]
     before_action :set_books, only: [:edit, :update, :show, :destory]
     def show
     end
@@ -36,5 +37,8 @@ class BooksController < ApplicationController
     end
     def book_params
         params.require(:book).permit(:title, :author, :isbn)
+    end
+    def ability
+       redirect_to books_path unless current_user.has_role?('librarian')
     end
 end

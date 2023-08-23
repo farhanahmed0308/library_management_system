@@ -13,7 +13,6 @@ gem "sprockets-rails"
 gem "sqlite3", "~> 1.4"
 
 gem 'devise'
-gem 'cancancan', '~> 1.10'
 gem 'rolify'
 
 # Use the Puma web server [https://github.com/puma/puma]

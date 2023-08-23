@@ -1,10 +1,27 @@
-<h1>this is home</h1>
-<td><%=link_to "new", new_book_path%></td>
-<%= User.count %>
+<div class="text-center">
+<h1>This is Home</h1>
+
+<% if user_signed_in? %>
+<p><%= link_to "Edit profile", edit_user_registration_path, class: "btn btn-lg btn-success" %></p>
+<p><%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-lg btn-danger" %></p>
+<% else %>
+<p><%= link_to "Sign up", new_user_registration_path, class: "btn btn-lg btn-success" %></p>
+<p><%= link_to "Login", new_user_session_path, class: "btn btn-lg btn-success" %></p>
+<% end %>
+<!-- <% if user_signed_in? %>
+<li role="separator" class="divider"></li>
+<li><%= button_to "Logout", destroy_user_session_path, method: :delete %></li>
+<% end %> -->
+
+<td><%=link_to "new", new_book_path, class: "btn btn-lg btn-danger"%></td>
+<p>
+  total signed-in users:  <%= User.count %>
+</p>
+
 <% if current_user %>
-<p>hello<%= current_user.email%> wellcome</p>
+<p>hy! <strong><%= current_user.email%> </strong> wellcome</p>
 <p>you are successfully sign_in</p>
-<p>user role is: <%= current_user.role %></p>
 <% else %>
 <p>you have not signed_in</p>
 <% end %>
+</div>
