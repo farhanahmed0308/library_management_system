@@ -6,6 +6,8 @@
         <th scope="col">Title</th>
         <th scope="col">Author</th>
         <th scope="col">ISBN</th>
+        <th scope="col">action</th>
+
       </tr>
     </thead>
     <tbody>
@@ -15,6 +17,11 @@
         <td><%= i.title%></td>
         <td><%= i.author%></td>
         <td><%= i.isbn%></td>
+        <td><%= link_to "show", book_path(i)%></td>
+        <% if current_user && current_user.has_role?('librarian') %>
+        <td><%= link_to "edit", edit_book_path(i)%></td>
+        <% end %>
+
       </tr>
         <% end %> 
     </tbody>

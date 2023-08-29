@@ -1,3 +1,4 @@
+<%= render "layouts/header" %>
 <div class="text-center">
 <h1>This is Home</h1>
 
@@ -12,16 +13,27 @@
 <li role="separator" class="divider"></li>
 <li><%= button_to "Logout", destroy_user_session_path, method: :delete %></li>
 <% end %> -->
+  <!-- card -->
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa130Z7yHYY6V8ob032JIggtoQkKfMBKnd4w&usqp=CAU" alt="Card image cap" style="height: 220px">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">buy</a>
+  </div>
+</div>
+
 
 <td><%=link_to "new", new_book_path, class: "btn btn-lg btn-danger"%></td>
 <p>
   total signed-in users:  <%= User.count %>
+  the role of this user is: <%= current_user%>
 </p>
 
 <% if current_user %>
 <p>hy! <strong><%= current_user.email%> </strong> wellcome</p>
 <p>you are successfully sign_in</p>
 <% else %>
-<p>you have not signed_in</p>
+<p>not logged in</p>
 <% end %>
 </div>

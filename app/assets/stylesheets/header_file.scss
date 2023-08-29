@@ -1,0 +1,25 @@
+#image_head {
+    width: 85%;
+}
+#image2_head {
+    height: 45px;
+    margin-right: 110px;
+}
+#header_style {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+#navbar {
+    position: absolute;
+    top: 10px;
+    align-items: center;
+    display: flex;
+    gap: 70px;
+
+
+}
+#lib {
+    margin-right: 140px;
+    font-weight: bold;
+}

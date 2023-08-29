@@ -7,11 +7,18 @@ class BooksController < ApplicationController
     def index
         @books = Book.all
     end
+    def status_update
+        @book = Book.find(params[:id])
+        if @book.available?
+            
+        end
+    end
     def new
         @book = Book.new
     end
     def create
-        @book = Book.new(book_params)
+        user = User.find(params[:id])
+        @book = user.books.new(book_params)
         if @book.save
             redirect_to @book
         else
@@ -31,12 +38,13 @@ class BooksController < ApplicationController
         @book.destroy
         redirect_to books_path
     end
+
     private
     def set_books
         @book = Book.find(params[:id])
     end
     def book_params
-        params.require(:book).permit(:title, :author, :isbn)
+        params.require(:book).permit(:title, :author, :isbn, :status, :pdf)
     end
     def ability
        redirect_to books_path unless current_user.has_role?('librarian')

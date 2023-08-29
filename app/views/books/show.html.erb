@@ -1,0 +1,19 @@
+<h1>show file</h1>
+<!-- <p><strong>image: </strong><%= image_tag @book.pdf %></p> -->
+<!-- <% if @book.pdf.attached? %>
+  <%= image_tag @book.pdf %>
+<% else %>
+  <p>No pdf available</p>
+<% end %> -->
+<% if @book.pdf.attached? %>
+  <!-- Display the PDF file -->
+  <%= link_to 'View PDF', rails_blob_path(@book.pdf, disposition: 'inline'), target: '_blank' %>
+<% else %>
+  <!-- Display a message if no PDF is attached -->
+  <p>No PDF file attached</p>
+<% end %>
+<p><strong>title: </strong><%= @book.title %></p>
+<p><strong>author: </strong><%= @book.author %></p>
+<p><strong>ISBN: </strong><%= @book.isbn %></p>
+<!-- <p><strong>current book creater: </strong><%= @book.users.email%></p> -->
+
