@@ -1,28 +1,5 @@
 
-<h2 >Log in</h2>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email, style: "margin-right: 208px"%><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :password, style: "margin-right: 181px" %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me, style: "margin-right: 125px"%>
-    </div>
-  <% end %>
-
-  <spam class="actions">
-    <%= f.submit "Log in", style: "margin-right: 133px"%>
-  </div>
-<% end %>
-  <%= render "devise/shared/links" %>
+<%= render "devise/sessions/session_header"%>
 
 
 
@@ -33,49 +10,51 @@
         <div class="card" style="border-radius: 1rem;">
           <div class="row g-0">
             <div class="col-md-6 col-lg-5 d-none d-md-block">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
-                alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
             </div>
             <div class="col-md-6 col-lg-7 d-flex align-items-center">
-              <div class="card-body p-4 p-lg-5 text-black">
+              <div class="card-body p-4 p-lg-5 text-black" style="    display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;">
+                <div class="d-flex align-items-center mb-3 pb-1">
+                  <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                  <span class="h1 fw-bold mb-0">Login</span>
+                </div>
 
-                <form>
-
-                  <div class="d-flex align-items-center mb-3 pb-1">
-                    <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                    <span class="h1 fw-bold mb-0">Logo</span>
-                  </div>
-
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                   <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
-                  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                   <div class="form-outline mb-4">
                     <%= f.label :email, style: "margin-right: 208px"%><br />
                     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-                    <!-- <input type="email" id="form2Example17" class="form-control form-control-lg" />
-                    <label class="form-label" for="form2Example17">Email address</label> -->
                   </div>
-
                   <div class="form-outline mb-4">
-                    <input type="password" id="form2Example27" class="form-control form-control-lg" />
-                    <label class="form-label" for="form2Example27">Password</label>
+                    <%= f.label :password, style: "margin-right: 181px" %><br />
+                    <%= f.password_field :password, autocomplete: "current-password" %>
+                    <!-- <input type="password" id="form2Example27" class="form-control form-control-lg" />
+                    <label class="form-label" for="form2Example27">Password</label> -->
                   </div>
-
+                  <% if devise_mapping.rememberable? %>
+                  <div class="field">
+                    <%= f.check_box :remember_me %>
+                    <%= f.label :remember_me, style: "margin-right: 125px,"%>
+                  </div>
+                <% end %>
                   <div class="pt-1 mb-4">
-                    <button class="btn btn-dark btn-lg btn-block" type="button">Login</button>
+                    <%= f.submit "Log in",class:"btn btn-dark btn-lg btn-block"%>
                   </div>
-
-                  <a class="small text-muted" href="#!">Forgot password?</a>
-                  <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="#!"
-                      style="color: #393f81;">Register here</a></p>
+                  <a class="small text-muted" href="<%= new_user_password_path %>">Forgot password?</a>
+                  <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? 
+                    <a href="<%= new_user_registration_path %>" style="color: #393f81;">Register here</a>
+                  </p>
                   <a href="#!" class="small text-muted">Terms of use.</a>
-                  <a href="#!" class="small text-muted">Privacy policy</a>
-                </form>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+                  <a href="<%= pages_privacy_path %>" class="small text-muted">Privacy policy</a>
+                <% end %> <!-- Close the form_for block -->
+              </div> <!-- Close the card-body div -->
+            </div> <!-- Close the col-md-6 col-lg-7 div -->
+          </div> <!-- Close the row div -->
+        </div> <!-- Close the card div -->
+      </div> <!-- Close the col col-xl-10 div -->
+    </div> <!-- Close the row d-flex div -->
+  </div> <!-- Close the container div -->
+</section> <!-- Close the section div -->

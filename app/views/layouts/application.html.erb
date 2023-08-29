@@ -6,14 +6,18 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'header_file' %>
+    <%= stylesheet_link_tag 'pages_privacy' %>
+    <%= stylesheet_link_tag 'devise' %>
+    <%= stylesheet_link_tag 'footer' %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body style="background: aliceblue;">
     <!-- header -->
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <!-- <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p> -->
     <%= yield %>
+    <%= render "layouts/footer"%>
   </body>
 </html>

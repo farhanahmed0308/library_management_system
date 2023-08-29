@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "pages#home"
+  get 'pages/privacy', to: 'pages#privacy'
   resources :books
   get '/librarians/show_members', to: 'librarians#show_members', as: 'show_members'
 end
