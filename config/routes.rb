@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   get 'pages/benefit', to: 'pages#benefit'
   get 'pages/faq', to: 'pages#faq'
   resources :books
+  resources :bookings
   get '/librarians/show_members', to: 'librarians#show_members', as: 'show_members'
 end

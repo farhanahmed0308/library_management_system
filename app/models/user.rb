@@ -5,4 +5,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :Trackable, :validatable, :Lockable
   has_many :books
+  has_many :bookings
 end

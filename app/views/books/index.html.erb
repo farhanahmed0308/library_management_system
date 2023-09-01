@@ -9,13 +9,16 @@
               <div class="card mb-5" style="width: 18rem; margin-left: 20px; margin-top: 30px">
                 <%= link_to book_path(book) do %>
                 <img class="card-img-top" src="https://img.freepik.com/premium-photo/opened-book-with-flying-pages-butterflies-dark-backgroundgenerative-ai_391052-12859.jpg" alt="Card image cap">
-
                 <% end %>
                   <div class="card-body">
                     <h5 class="card-title"><strong>Status: </strong><%= book.status%></h5>
                     <h5 class="card-title"><strong>Type: </strong><%= book.type%></h5>
-                    <a href="<%= book_path(book) %>" class="btn btn-info">Details</a>
-                    <button type="submit" class="btn btn-warning">Book Now</button>
+                    <%= link_to "Details", book_path(book), class: "btn btn-info"%>
+                    <%= form_with(url: "/bookings/", method: :post) do |form| %>
+                      <%= form.hidden_field :id , value: book.id %>
+                      <button type="submit" class="btn btn-warning">Book Now</button>
+                    <% end %>
+                      <!-- <button type="submit" class="btn btn-warning",>Book Now</button> -->
                   </div>
                 </div>
               </div>
