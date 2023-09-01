@@ -2,11 +2,18 @@
     <img src="	https://www.skoolbeep.com/blog/wp-content/uploads/2021/03/library-management-bnr.jpg" alt="image loading" id="image_head">
     <div id="navbar">
         <!-- <div id="lib">Library Management</div> -->
-        <img src="https://img.icons8.com/?size=1x&id=-d7FL5YRy8yV&format=png" alt="" id="image2_head">
-        <div>Home</div>
-        <div>Features</div>
-        <div>Benefits</div>
-        <div>FAQ</div>
-        <div>Features</div>
+        <%= link_to new_user_session_path do %>
+        <img src="https://static.studytonight.com/css/resource.v3/icons/studytonight/svg/st-logo-dark.svg" alt="" id="image2_head">
+        <% end %>
+        <a class="small text-muted decoration" href="/books", id="decoration-none" >Home</a>
+        <a class="small text-muted decoration" href="/pages/benefit", id="decoration-none">Benefits</a>
+        <a class="small text-muted decoration" href="/pages/faq", id="decoration-none">FAQ</a>
+        <% if user_signed_in? %>
+        <%= link_to "Edit", edit_user_registration_path, style: "text-decoration: none; color: var(--bs-secondary-color) !important;"%>
+        <%= link_to "Logout", destroy_user_session_path, data: {turbo_method: :delete}, style: "text-decoration: none; color: var(--bs-secondary-color) !important;" %>
+        <% else %>
+            <%= link_to "Login", new_user_session_path, id: "decoration-none" %>
+            <%= link_to "Sign up", new_user_registration_path, id: "decoration-none" %>
+        <% end %>
     </div>
 </div>

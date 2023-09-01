@@ -10,9 +10,11 @@ class User::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+      # sign_out(current_user)
+      # redirect_to new_user_session_path
+  end
 
   # GET /resource/edit
   # def edit

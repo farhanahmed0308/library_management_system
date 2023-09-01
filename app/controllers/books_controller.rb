@@ -17,13 +17,29 @@ class BooksController < ApplicationController
         @book = Book.new
     end
     def create
-        user = User.find(params[:id])
-        @book = user.books.new(book_params)
+        # user = User.find(params[:id])
+        # @book = Books.new(book_params)
+        # if @book.save
+        #     redirect_to @book
+        # else
+        #     render "new"
+        # end
+        if params[:book][:type] == "Book"
+            @book = Book.new(book_params)
+            elsif params[:book][:type] == "EBook"
+                @book = EBook.new(book_params)
+            elsif params[:book][:type] == "Periodical"
+                @book = Periodical.new(book_params)
+            else
+                puts "Invalid book type"
+        end
+        @book.user = current_user
         if @book.save
-            redirect_to @book
+            redirect_to book_url(@book)
         else
             render "new"
         end
+
     end
     def edit
     end
@@ -44,7 +60,7 @@ class BooksController < ApplicationController
         @book = Book.find(params[:id])
     end
     def book_params
-        params.require(:book).permit(:title, :author, :isbn, :status, :pdf)
+        params.require(:book).permit(:title, :author, :isbn, :status, :pdf, :type)
     end
     def ability
        redirect_to books_path unless current_user.has_role?('librarian')

@@ -16,10 +16,17 @@
     align-items: center;
     display: flex;
     gap: 70px;
-
-
 }
 #lib {
     margin-right: 140px;
     font-weight: bold;
+}
+#decoration-none {
+    text-decoration: none;   
+    color: var(--bs-secondary-color) !important;
+}
+.decoration:hover {
+    color: #ff9900 !important;
+    text-decoration: #ff9900 !important;
+    font-size: 20px !important;
 }

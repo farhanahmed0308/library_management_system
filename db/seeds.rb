@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+
+30.times do
+    user = User.find(2)
+    user.books.create(title: "historic", author:"hafiz sheik", isbn: "21221212")
+end

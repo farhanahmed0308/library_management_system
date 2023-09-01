@@ -1,19 +1,48 @@
-<h1>show file</h1>
-<!-- <p><strong>image: </strong><%= image_tag @book.pdf %></p> -->
-<!-- <% if @book.pdf.attached? %>
-  <%= image_tag @book.pdf %>
-<% else %>
-  <p>No pdf available</p>
-<% end %> -->
-<% if @book.pdf.attached? %>
-  <!-- Display the PDF file -->
-  <%= link_to 'View PDF', rails_blob_path(@book.pdf, disposition: 'inline'), target: '_blank' %>
-<% else %>
-  <!-- Display a message if no PDF is attached -->
-  <p>No PDF file attached</p>
-<% end %>
-<p><strong>title: </strong><%= @book.title %></p>
-<p><strong>author: </strong><%= @book.author %></p>
-<p><strong>ISBN: </strong><%= @book.isbn %></p>
-<!-- <p><strong>current book creater: </strong><%= @book.users.email%></p> -->
+<%= render "layouts/navbar2" %>
+<section class="h-100 h-custom" style="background-color: #8fc4b7;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6" style="display: flex;
+      justify-content: center;">
+        <div class="card rounded-3" style="width: 500px;">
+          <% if @book.pdf.attached? %>
+          <%= link_to rails_blob_path(@book.pdf, disposition: 'inline'), target: '_blank' do %>
+          <img src="https://img.freepik.com/premium-photo/opened-book-with-flying-pages-butterflies-dark-backgroundgenerative-ai_391052-12859.jpg"
+            class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+            alt="Sample photo">
+          <% end %>
+          <% else %>
+          <p>No PDF file attached</p>
+          <% end %>
+
+          <div class="card-body p-1 p-md-3" style="margin-left: 48px;">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-3 px-md-2">Book Detail</h3>
+
+            <form class="px-md-2">
+
+                <div class="form-outline ">
+                  <p><strong style="margin-right: 40px;">Title: </strong><%= @book.title %></p>
+                </div>
+                <div class="col-md-6 ">
+                  <p><strong style="margin-right: 22px;">Author: </strong><%= @book.author %></p>
+                </div>
+                <div class="col-md-6 ">
+                  <p><strong style="margin-right: 35px;">ISBN: </strong><%= @book.isbn %></p>
+                </div>
+                <div class="col-md-6 ">
+                  <p><strong style="margin-right: 26px;">Status: </strong><%= @book.status %></p>
+                </div>
+                <div class="col-md-6 ">
+                  <p><strong style="margin-right: 37px;">Type: </strong><%= @book.type %></p>
+                </div>
+              <button type="submit" class="btn btn-success btn-lg mb-1">Book Now</button>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
