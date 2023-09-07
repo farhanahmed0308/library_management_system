@@ -1,0 +1,32 @@
+// admin profile
+#admin-col-second {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 43px;
+    background-color: white;
+    border-radius: 62px;
+}
+#admin-card-1 {
+    width: 250px; 
+    height: 92px; 
+    border: none;
+    border-radius: 30px;
+}
+#admin-card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-text:hover{
+    color: #ff9900 !important;
+    text-decoration: #ff9900 !important;
+    font-size: 20px !important;
+}
+#member-card-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

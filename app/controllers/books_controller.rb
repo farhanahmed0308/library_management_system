@@ -5,7 +5,12 @@ class BooksController < ApplicationController
     def show
     end
     def index
-        @books = Book.all
+        @q = Book.ransack(params[:query])
+        @books = @q.result(distinct: false)
+        # @books = Book.all
+        if @books.empty?
+            flash[:notice] = "record not found"
+        end
     end
     def status_update
         @book = Book.find(params[:id])
@@ -51,6 +56,8 @@ class BooksController < ApplicationController
         end
     end
     def destroy
+        @book = Book.find(params[:id])
+        Booking.where(book_id: @book).destroy_all
         @book.destroy
         redirect_to books_path
     end

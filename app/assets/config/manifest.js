@@ -4,5 +4,6 @@
 //= link pages_privacy.css
 //= link devise.css
 //= link footer.css
+//= link profile.css
 
 

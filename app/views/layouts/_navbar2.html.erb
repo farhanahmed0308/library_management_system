@@ -52,9 +52,46 @@
         </button>
         <% end %>
       </div>
+      <!-- using helper -->
+      <%= user_profile_link(current_user)%>
+
+
+
+      <!-- <% if current_user.present? && current_user.profile_picture.attached? %> -->
+      <!-- turnary operator: ? : -->
+      <!-- <% link = current_user.has_role?('member')? '/memberprofiles' : '/adminprofiles' %> -->
+        <!-- <% if current_user.has_role?('member')%> -->
+          <!-- <%= link_to link do %>
+            <img
+            src="<%= image_tag url_for(current_user.profile_picture) %>"
+            class="rounded-circle"
+            height="25"
+            alt="Black and White Portrait of a Man"
+            loading="lazy"/>
+          <% end %> -->
+        <!-- <% elsif current_user.has_role?('librarian') %>
+            <%= link_to '/adminprofiles' do %>
+              <img
+              src="<%= image_tag url_for(current_user.profile_picture) %>"
+              class="rounded-circle"
+              height="25"
+              alt="Black and White Portrait of a Man"
+              loading="lazy"/>
+            <% end %> -->
+        <!-- <% end %> -->
+      <!-- <% end %> -->
+
+    
+     
     </div>
     <!-- Collapsible wrapper -->
   </div>
   <!-- Container wrapper -->
 </nav>
 <!-- Navbar -->
+
+
+
+
+
+

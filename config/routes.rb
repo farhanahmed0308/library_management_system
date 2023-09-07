@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
+  devise_for :users
 
-    registrations: 'user/registrations'
-  }
   # root to: "devise/session#new"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -14,4 +12,10 @@ Rails.application.routes.draw do
   resources :books
   resources :bookings
   get '/librarians/show_members', to: 'librarians#show_members', as: 'show_members'
+  get '/memberprofiles', to: 'member_profiles#profile'
+  get '/adminprofiles', to: 'admin_profiles#profile'
+  get '/user_details', to: 'admin_profiles#user_detail'
+  delete '/destroy_user/:id/', to: 'admin_profiles#destroy_user'
+  get "/booked_book", to: "bookings#booked_book"
+
 end

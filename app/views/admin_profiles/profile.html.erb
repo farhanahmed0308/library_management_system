@@ -1,0 +1,60 @@
+<%= render "layouts/navbar2" %>
+<div class="container" style="margin-top: 30px;">
+    <div class="row" style="background-color: lightslategrey;margin-bottom: 20px;">
+        <div class="col-4">
+            <div class="card" style="width: 18rem; margin: 40px">
+                <img src="	https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><strong>Name: </strong><%= current_user.username%></h5>
+                  <p class="card-title"><strong>Status: </strong>Admin</p>
+                  <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+            </div>
+        </div>
+        <div class="col-8" >
+            <div id="admin-col-second">
+                <div>
+                    <div class="card" id="admin-card-1">
+                    <!-- <img src="..." class="card-img-top" alt="..."> -->
+                    <div class="card-body" id="admin-card-body">
+                    <h5 class="card-text" style="font-size: 16px;"> <a href="/books" style="text-decoration: none; color: #708090 ">Books</a> </h5>
+                    <h5 class="card-text" style="color: #708090;"><%= Book.count %></h5>
+                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                    </div>
+                </div>
+                </div>
+                <div>
+                    <div class="card" style="width: 250px; height: 92px;border-top-left-radius: 37px;
+                    border-top-right-radius: 37px;">
+                    <!-- <img src="..." class="card-img-top" alt="..."> -->
+                    <div class="card-body" id="admin-card-body">
+                    <h5 class="card-text" style="font-size: 16px;"> <a href="/user_details" style="text-decoration: none; color: #708090 ">Users</a></h5>
+                    <h5 class="card-text" style="color: #708090;" ><%= User.count %></h5>
+                    </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="card" id="admin-card-1">
+                        <!-- <img src="..." class="card-img-top" alt="..."> -->
+                        <div class="card-body" id="admin-card-body">
+                        <h5 class="card-text" style="color: #708090 ;font-size: 16px;">Total borrowed books</h5>
+                        <h5 class="card-text" style="color: #708090;"><%= Booking.joins(:book).where(book: {status: "Borrowed"}).count%></h5>
+                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        </div>           
+
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="card" style="width: 18rem; margin: 40px">
+                    <div class="card-body">
+                        <h3 style="color: #708090">Books Record</h3>
+                      <h5 class="card-text" style="color: #708090 ;font-size: 16px;"><a href="/booked_book" style="text-decoration: none; color: #708090 ">Borrowed Books: </a><%= User.borrowed_books(current_user).count%></h5>
+                      <p class="card-title" style="color: #708090 ;font-size: 16px;"><strong>Return books: </strong>hello</p>
+                      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -35,8 +35,10 @@
                 <div class="col-md-6 ">
                   <p><strong style="margin-right: 37px;">Type: </strong><%= @book.type %></p>
                 </div>
-              <button type="submit" class="btn btn-success btn-lg mb-1">Book Now</button>
-
+                  <%= form_with(url: "/bookings/", method: :post) do |form| %>
+                  <%= form.hidden_field :id , value: @book.id %>
+                  <button type="submit" class="btn btn-warning">Book Now</button>
+                  <% end %>
             </form>
 
           </div>
