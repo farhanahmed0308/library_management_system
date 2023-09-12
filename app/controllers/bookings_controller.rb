@@ -41,7 +41,8 @@ class BookingsController < ApplicationController
             a = reserve.pluck(:user_id)
             reserve_user = User.where(id: a)
             reserve_user.each do |user|
-                ReserveBookNotificationMailer.notify(user, @book).deliver_now
+                # ReserveBookNotificationMailer.notify(user, @book).deliver_now
+                ReserveBookJob.perform_later(user, @book)
             end
             redirect_to booked_book_path
         else
