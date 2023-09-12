@@ -15,6 +15,8 @@ gem "sqlite3", "~> 1.4"
 gem 'devise'
 gem 'rolify'
 gem 'ransack'
+# for show pdf file within the application
+gem 'pdfjs-rails' 
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"

@@ -22,13 +22,6 @@ class BooksController < ApplicationController
         @book = Book.new
     end
     def create
-        # user = User.find(params[:id])
-        # @book = Books.new(book_params)
-        # if @book.save
-        #     redirect_to @book
-        # else
-        #     render "new"
-        # end
         if params[:book][:type] == "Book"
             @book = Book.new(book_params)
             elsif params[:book][:type] == "EBook"
@@ -36,15 +29,16 @@ class BooksController < ApplicationController
             elsif params[:book][:type] == "Periodical"
                 @book = Periodical.new(book_params)
             else
-                puts "Invalid book type"
+                nil
         end
         @book.user = current_user
         if @book.save
+            flash[:notice] = "Book saved successfully"
             redirect_to book_url(@book)
         else
+            flash[:notice] = "Error"
             render "new"
         end
-
     end
     def edit
     end

@@ -5,7 +5,8 @@
             <div class="card" style="width: 18rem; margin: 40px">
                 <!-- <img src="	https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" class="card-img-top" alt="..."> -->
                 
-                <%= user_profile_details(current_user) %> <!-- HELPER METHOD --> 
+                <%= user_profile_link(current_user,height: 288, width: "100%", rounded: false )%> 
+                <!-- HELPER METHOD --> 
                 <div class="card-body">
                   <h5 class="card-title"><%= current_user.username%></h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -38,9 +39,11 @@
                     <h3 style="margin-top: 30px;
                     margin-left: 20px;">Book Record</h3>
                     <div class="card-body">
-                      <h5 class="card-title"><strong>Total books: </strong>
-                      <%= @borrowed_books.count %></h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <h5 class="card-title"><a href="/booked_book" style="text-decoration: none; color: #708090 ">Borrowed Books: </a><%= @borrowed_books.count %></h5>
+                      <%= link_to "/reserve_book" do %>
+                      <p class="card-title" style="color: #708090 ;font-size: 16px;"><strong>Reserve books: </strong><%= current_user.reservations.count%></p>
+                      <% end %>
+                      <h5 class="card-title"><a href="/booked_book" style="text-decoration: none; color: #708090 ">over due charge: </a><%= current_user.balance %></h5>
                     </div>
                 </div> 
                 <div class="card" style="width: 18rem; margin: 40px">

@@ -1,0 +1,36 @@
+
+
+<%= render "layouts/navbar2" %>
+
+<div class="container" style="width: 80%; margin-top: 20px">
+<table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">User_id</th>
+        <th scope="col">Book_id</th>
+        <!-- <th scope="col">Reserve Books</th>
+        <th scope="col">Borrowed Books</th> -->
+        <th scope="col" colspan="3">Book Name</th>
+      </tr>
+    </thead>
+    <tbody>
+    
+        <% @reservation.each_with_index do |i,number|%>
+    <tr>
+        <th scope="row"><%= number + 1%></th>
+        <td><%= i.user_id%></td>
+        <td><%= i.book_id%></td>
+        <td>title of book</td>
+    </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+

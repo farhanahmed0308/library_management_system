@@ -100,3 +100,12 @@ changes in book.show
 <p><strong>title: </strong><%= @book.title %></p>
 <p><strong>author: </strong><%= @book.author %></p>
 <p><strong>ISBN: </strong><%= @book.isbn %></p>
+
+
+
+  <!-- <%# form_with(url: "/reserve/", method: :post,) do |form| %>
+                    <%# form.hidden_field :id, value: book.id %>
+                    <%# if book.status != "Available" %>
+                    <button type="submit" class="btn btn-warning" id="book-now-button">reserve</button>
+                    <%# end %>
+                    <%# end %> -->

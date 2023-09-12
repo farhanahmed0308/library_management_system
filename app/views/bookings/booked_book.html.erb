@@ -9,18 +9,13 @@
                 <img class="card-img-top" src="https://img.freepik.com/premium-photo/opened-book-with-flying-pages-butterflies-dark-backgroundgenerative-ai_391052-12859.jpg" alt="Card image cap">
                 <% end %>
                   <div class="card-body">
-                    <h5 class="card-title"><strong>Status: </strong><%= book.status%></h5>
-                    <h5 class="card-title"><strong>Type: </strong><%= book.type%></h5>
+                    <h5 class="card-title"><strong>Status: </strong><%= book&.status%></h5>
+                    <h5 class="card-title"><strong>Type: </strong><%= book&.type%></h5>
+                    <h5 class="card-title"><strong>Deadline: </strong><%= book.booking.due_date %></h5>
+
                     <%= link_to "Details", book_path(book), class: "btn btn-info"%>
 
                     <td><%= link_to 'return', booking_path(book), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'},  class: "btn btn-outline-success btn-md", role: "button" %>
-
-
-
-                    <!-- <%# form_with(url: "/bookings/", method: :post) do |form| %>
-                      <%# form.hidden_field :id , value: book.id %>
-                      <button type="submit" class="btn btn-warning">Book Now</button>
-                    <%# end %> -->
                     <% if current_user %>
                     <% if user_signed_in? %>
                       <% if current_user.has_role?('librarian') %>

@@ -17,5 +17,8 @@ Rails.application.routes.draw do
   get '/user_details', to: 'admin_profiles#user_detail'
   delete '/destroy_user/:id/', to: 'admin_profiles#destroy_user'
   get "/booked_book", to: "bookings#booked_book"
+  post "/reserve", to: "reservations#reserve"
+  get "/reserve_book", to: "reservations#index"
+
 
 end

@@ -1,13 +1,16 @@
 <%= render "layouts/navbar2" %>
 
-<h1 id="head">THIS IS THE INDEX OF USER</h1>
-<div class="container" style="width: 80%;">
+<div class="container" style="width: 80%; margin-top: 30px">
 <table class="table table-striped table-dark">
     <thead>
       <tr>
         <th scope="col">#</th>
         <th scope="col">Username</th>
         <th scope="col">Email</th>
+        <th scope="col">Reserve Books</th>
+        <th scope="col">Borrowed Books</th>
+
+
         <th scope="col" colspan="3">Operation</th>
       </tr>
     </thead>
@@ -18,6 +21,8 @@
         <th scope="row"><%= number + 1%></th>
         <td><%= i.username%></td>
         <td><%= i.email%></td>
+        <td><%= i.reservations.count %></td>
+        <td><%= i.bookings.count %></td>
         <td><%= link_to 'Delete', "/destroy_user/#{i.id}/", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-outline-success btn-md", role: "button" %></td>
         <!-- <td><%# link_to "show", voter_path(i),  class: "btn btn-outline-success btn-md", role: "button" %></td>
         <td><%# link_to "edit", edit_voter_path(i),  class: "btn btn-outline-success btn-md", role: "button" %></td> -->

@@ -1,22 +1,34 @@
 class BookingsController < ApplicationController
+    include BookingConcern
     before_action :authenticate_user!
-    # before_action :check_borrowed, only: [:create]
     def new
         @booking = Booking.new
     end
     def booked_book
-        
-        @borrowed_books = User.borrowed_books(current_user)
+        # @book = Book.find(params[:id])
+        # a = Booking.where(user_id: current_user.id).pluck(:book_id)
+        # b = a.pluck(:book_id)
+        # @borrowed_books = Book.where(id: Booking.where(user_id: current_user.id).pluck(:book_id))
+        #using scope
+        @borrowed_books = Book.borrowed_by_user(current_user)
+        # @borrowed_books = Book.where(user_id: current_user.id, status: "Borrowed")
+        # @borrowed_books = User.borrowed_books(current_user)
     end
     def create
         @book = Book.find(params[:id])
-        @booking = current_user.bookings.build(book_id: @book.id)
+        if @book.status == "Borrowed"
+            flash[:notice] = "already booked"
+            redirect_to "/books" and return
+        end
+        due_date = Date.today + 1.day
+        @booking = current_user.bookings.build(book_id: @book.id, due_date: due_date)
         @booking.book.update(status: 1)
-        flash[:notice] = "successfully booked"
         if @booking.save
-            redirect_to "/books"
+          flash[:notice] = "Successfully booked"
+          redirect_to "/books"
         else
-            redirect_to root_path
+          flash[:error] = "Booking failed"
+          redirect_to root_path
         end
     end
     def destroy
@@ -25,16 +37,15 @@ class BookingsController < ApplicationController
         if @booking.destroy_all
             flash[:notice] = "successfully unbooked"
             @book.update(status: 0)
+            reserve = Reservation.where(book_id: @book.id)
+            a = reserve.pluck(:user_id)
+            reserve_user = User.where(id: a)
+            reserve_user.each do |user|
+                ReserveBookNotificationMailer.notify(user, @book).deliver_now
+            end
             redirect_to booked_book_path
         else
             flash[:notice] = "failed to unbook"
         end
     end
-    private
-    # def check_borrowed
-    #     @book = Book.find(params[:id])
-    #     if @book.where(status: "Borrowed")
-    #         flash[:notice] = "already borrowed"
-    #     end
-    # end
 end

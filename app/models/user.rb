@@ -8,6 +8,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :Trackable, :validatable, :Lockable
   has_many :books
   has_many :bookings
+  has_many :reservations
   #scopes
   scope :borrowed_books, ->(user) { user.bookings.map { |b| b.book if b.book.status.eql?("Borrowed") } }
 

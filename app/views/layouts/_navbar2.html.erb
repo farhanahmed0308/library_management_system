@@ -14,6 +14,8 @@
         style="margin-top: -1px;"
       />
       <% end %>
+      <a href="/" style="color: white; margin-left: 50px; margin-top: 10px; text-decoration: none;">Home</a>
+      <!-- <button href= "/books" class="btn btn-success" style="margin-left: 15px">Home</button> -->
 
     <!-- Toggle button -->
     <button
@@ -23,8 +25,7 @@
       data-mdb-target="#navbarButtonsExample"
       aria-controls="navbarButtonsExample"
       aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+      aria-label="Toggle navigation">
       <i class="fas fa-bars"></i>
     </button>
 
@@ -37,8 +38,6 @@
         </li>
       </ul>
       <!-- Left links -->
-   
-
       <div class="d-flex align-items-center ">
         <% if user_signed_in? %>
         <button type="button" class="btn btn-green px-3 me-2">

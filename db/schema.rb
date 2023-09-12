@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_01_072806) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_09_191916) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -44,6 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_072806) do
     t.integer "book_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "due_date"
     t.index ["book_id"], name: "index_bookings_on_book_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -63,6 +64,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_072806) do
   create_table "books_users", id: false, force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "book_id", null: false
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "book_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_reservations_on_book_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -93,6 +103,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_072806) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"
+    t.decimal "balance", precision: 10, scale: 2, default: "0.0"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -110,4 +121,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_072806) do
   add_foreign_key "bookings", "books"
   add_foreign_key "bookings", "users"
   add_foreign_key "books", "users"
+  add_foreign_key "reservations", "books"
+  add_foreign_key "reservations", "users"
 end
