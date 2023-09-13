@@ -1,0 +1,21 @@
+<% if flash[:notice].present? %>
+  <div class="alert alert-info">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+<%= search_form_for @q do |i|%>
+  <div style="display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; margin-top: 115px;">
+      <%= i.text_field :title_or_author_or_status_or_type_cont, class: "form-control mr-sm-2 inline", placeholder: "Search", style: "width: 450px;
+      border-top-left-radius: 30px;
+      border-bottom-left-radius:30px;
+      height: 42px;" %>
+    <div>
+      <%= i.submit class: "btn btn-outline-success my-2 my-sm-0", style: "border-top-right-radius: 30px;
+      border-bottom-right-radius:30px; height:42px
+      " %>
+    </div>
+  </div>
+<% end %>

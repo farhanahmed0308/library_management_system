@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+<nav class="navbar navbar-expand-lg navbar-dark bg-light fixed-top ">
   <!-- class="navbar navbar-dark bg-dark" -->
   <!-- Container wrapper -->
   <div class="container">
@@ -14,7 +14,7 @@
         style="margin-top: -1px;"
       />
       <% end %>
-      <a href="/" style="color: white; margin-left: 50px; margin-top: 10px; text-decoration: none;">Home</a>
+      <a href="/" style=" color: #757575; margin-left: 50px; margin-top: 10px; text-decoration: none;">Home</a>
       <!-- <button href= "/books" class="btn btn-success" style="margin-left: 15px">Home</button> -->
 
     <!-- Toggle button -->
@@ -52,7 +52,9 @@
         <% end %>
       </div>
       <!-- using helper -->
+      <% if user_signed_in? %>
       <%= user_profile_link(current_user)%>
+      <% end %>
 
 
 

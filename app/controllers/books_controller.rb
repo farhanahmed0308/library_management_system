@@ -52,6 +52,7 @@ class BooksController < ApplicationController
     def destroy
         @book = Book.find(params[:id])
         Booking.where(book_id: @book).destroy_all
+        Reservation.where(book_id: @book).destroy_all
         @book.destroy
         redirect_to books_path
     end
@@ -61,7 +62,7 @@ class BooksController < ApplicationController
         @book = Book.find(params[:id])
     end
     def book_params
-        params.require(:book).permit(:title, :author, :isbn, :status, :pdf, :type)
+        params.require(:book).permit(:title, :author, :isbn, :status, :pdf, :front_page, :type)
     end
     def ability
        redirect_to books_path unless current_user.has_role?('librarian')

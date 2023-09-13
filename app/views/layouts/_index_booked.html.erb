@@ -5,7 +5,8 @@
             <div class="col-lg-3">
               <div class="card mb-5" style="width: 18rem; margin-left: 20px; margin-top: 30px">
                 <%= link_to book_path(book) do %>
-                <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH1TkKW8YQyOTi5znTeEnZVTyQBNFB2Mirrw&usqp=CAU" alt="Card image cap">
+                <!-- <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH1TkKW8YQyOTi5znTeEnZVTyQBNFB2Mirrw&usqp=CAU" alt="Card image cap"> -->
+                <%= image_tag url_for(book.front_page), class: "card-img-top" %>
                 <% end %>
                   <div class="card-body">
                     <h5 class="card-title"><strong>Status: </strong><%= book.status%></h5>
@@ -13,15 +14,15 @@
                    <div style="display: flex; justify-content: center">
                     <%= form_with(url: "/reserve/", method: :post) do |form| %>
                     <%= form.hidden_field :id, value: book.id %>
-                      <% if book.status != "Available" %>
+                      <% if book.status != "Available" && user_signed_in?%>
                       <button type="submit" class="btn btn-warning" id="book-now-button">reserve</button>
                       <% end %>
                     <% end %>
 
-                    <%= link_to "Details", book_path(book), class: "btn btn-success", style: "height: 39px;" %>
+                    <%= link_to "Details", book_path(book), class: "btn btn-success", style: "height: 36px;" %>
                     <%= form_with(url: "/bookings/", method: :post, id: "booking-form") do |form| %>
                       <%= form.hidden_field :id, value: book.id %>
-                      <button type="submit" class="btn btn-warning" id="book-now-button", style= "height: 39px;">Book Now</button>
+                      <button type="submit" class="btn btn-warning inline-button" id="book-now-button", style= "height: 36px;">Add</button>
                     <% end %>
                   </div>
 

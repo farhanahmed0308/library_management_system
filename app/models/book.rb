@@ -1,10 +1,10 @@
 class Book < ApplicationRecord
     has_one_attached :pdf
-
+    has_one_attached :front_page
     self.inheritance_column = 'book_type'
     belongs_to :user
-    has_one :booking
-    has_one :reservation
+    has_one :booking, dependent: :destroy
+    has_one :reservation, dependent: :destroy
     validates :title, presence: true
     enum status: [:Available, :Borrowed,:Reserved,:Over_due]
 

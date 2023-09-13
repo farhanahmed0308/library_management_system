@@ -1,23 +1,37 @@
 <%= render "layouts/header" %>
 
-<div>
-   <h1>Have Questions? Look Here</h1> 
-    <p>SkoolBeep online classes is a comprehensive software suite that can digitize your entire <br> school academic operations. If you have more questions, please send us a message</p>
-    <div class="dropdown" style="margin-bottom: 100px;">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          What if some of parents dont't have smartphone or internet
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Action</a>
           <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a>
-          <p>Eventually all parents are going to have smartphones, 
-            but we do understand that some of the parents <br>
-            may not have access to smartphone today. To enable communication with
-            all parents, we have made <br> 
-            SMS bridging and voice calls. This will ensure you c
-            an reach out to all parents irrepective of phone type <br> 
-            or data connection availability.</p>
         </div>
-      </div>
-</div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>

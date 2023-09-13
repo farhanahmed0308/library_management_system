@@ -1,27 +1,8 @@
 
 <%= render "layouts/navbar2" %>
 
-<% if flash[:notice].present? %>
-  <div class="alert alert-info">
-    <%= flash[:notice] %>
-  </div>
-<% end %>
 
-<%= search_form_for @q do |i|%>
-  <div style="    display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center; margin-top: 50px;">
-    <div class="navbar navbar-light bg-aliceblue;">
-      <%= i.text_field :title_or_author_or_status_or_type_cont, class: "form-control mr-sm-2 inline", placeholder: "Search", style: "width: 450px;
-      border-radius: 30px;
-      height: 42px;" %>
-    </div>
-    <div>
-      <%= i.submit class: "btn btn-outline-success my-2 my-sm-0", style: "border-radius: 30px" %>
-    </div>
-  </div>
-<% end %>
+<%= render "books/for_searching" %>
 
 <%= render "layouts/index_booked" %>
 

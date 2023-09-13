@@ -14,10 +14,10 @@
 flex-direction: column;
 justify-content: center;
 align-items: center;">
-<form style="background-color: antiquewhite; width: 333px; padding: 26px; margin: 30px;
-border-radius: 36px;">
+<div style="background-color: antiquewhite; width: 333px; padding: 26px; margin: 30px;
+border-radius: 36px;    margin-top: 123px;">
 <h1>Create Book</h1>
-<%= form_with url: books_path, method: :post do |i|%>
+<%= form_for @book, method: :post do |i|%>
 <div class="form-group">
     <%= i.label :title%>
     <%= i.text_field :title%>
@@ -34,10 +34,10 @@ border-radius: 36px;">
     <%= i.label :pdf %>
     <%= i.file_field :pdf %>
 </div>
-<!-- <div class="form-group" style="margin-top: 20px;">
-    <%# i.label :front_page %>
-    <%# i.file_field :front_page %>
-</div> -->
+<div class="form-group" style="margin-top: 20px;">
+    <%= i.label :front_page %>
+    <%= i.file_field :front_page %>
+</div>
 <div class="form-group" style="margin-top: 20px;">
     <%= i.label :type %>
     <%= i.select :type, ['Book', 'EBook', 'Periodical'] %>
@@ -46,7 +46,7 @@ border-radius: 36px;">
     <%= i.submit%>
 </div>
 <% end %>
-</form>
+</div>
 </div>
 
 

@@ -3,12 +3,39 @@
     color: #ff9900;
 }
 #session-brand {
-    color: white;
-    margin-left: 30px;
+    color: #757575;
+    margin-left: 100px;
+    font-size: 16px;
 }
 #session-home:hover {
     color: #ff9900;
+    
 }
 #session-home {
-    color: white;
+    color: #757575;
+    margin-left: 50px;
+    font-size: 16px;
+}
+
+// ---devise edit
+#registration-update {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#registration-form {
+    background-color: antiquewhite;
+    width: 426px; 
+    padding: 26px; 
+    margin: 30px;
+    border-radius: 36px;
+    margin-top: 120px;
+}
+#registration-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 15px;
 }
