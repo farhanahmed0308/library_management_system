@@ -1,18 +1,48 @@
-<%= form_with model: @book do |i|%>
-<div>
-    <%= i.label :title%>
-    <%= i.text_field :title%>
-</div>
-<div>
-    <%= i.label :author%>
-    <%= i.text_field :author%>
-</div>
-<div>
-    <%= i.label :ISBN%>
-    <%= i.text_field :isbn%>
+<%= render "layouts/navbar2" %>
+<% if @book.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@book.errors.count, "error") %> prohibited this post from being saved:</h2>
+    <ul>
+    <% @book.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div id="book_new1">
+    <div id="book_new2"> 
+             <h1><%= @page_title %></h1>
+              <%= form_for @book, method: @method_defined do |i|%>
+            <div class="form-group">
+                <%= i.label :title%>
+                <%= i.text_field :title, style: "margin-left: 17px;"%>
+            </div>
+            <div class="form-group" style="margin-top: 20px;">
+                <%= i.label :author%>
+                <%= i.text_field :author%>
+            </div>
+            <div class="form-group" style="margin-top: 20px;">
+                <%= i.label :ISBN%>
+                <%= i.text_field :isbn, style: "margin-left: 17px;"%>
+            </div>
+            <div class="form-group" style="margin-top: 20px;">
+                <%= i.label :pdf %>
+                <%= i.file_field :pdf %>
+            </div>
+            <div class="form-group" style="margin-top: 20px;">
+                <%= i.label :front_page %>
+                <%= i.file_field :front_page %>
+            </div>
+            <div class="form-group" style="margin-top: 20px;">
+                <%= i.label :type %>
+                <%= i.select :type, ['Book', 'EBook', 'Periodical'] %>
+            </div>
+            <div class="form-group ">
+                <%= i.submit%>
+            </div>
+        <% end %>
+    </div>
 </div>
 
-<div>
-    <%= i.submit%>
-</div>
-<% end %>
+

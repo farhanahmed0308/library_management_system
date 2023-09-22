@@ -5,5 +5,10 @@
 //= link devise.css
 //= link footer.css
 //= link profile.css
+//= link searching.css
+//= link book.css
+//= link new_header_file.css
+
+
 
 

@@ -11,7 +11,9 @@
         <th scope="col">Book_id</th>
         <!-- <th scope="col">Reserve Books</th>
         <th scope="col">Borrowed Books</th> -->
-        <th scope="col" colspan="3">Book Name</th>
+        <th scope="col">Book Name</th>
+        <th scope="col">status</th>
+
       </tr>
     </thead>
     <tbody>
@@ -22,6 +24,8 @@
         <td><%= i.user_id%></td>
         <td><%= i.book_id%></td>
         <td>title of book</td>
+        <td><%= i.status%></td>
+
     </tr>
       <% end %>
     </tbody>

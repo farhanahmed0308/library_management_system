@@ -1,37 +1,23 @@
 <%= render "layouts/navbar2" %>
-<section class="h-100 h-custom" style="background-color: #8fc4b7;">
+<% if flash[:notice].present? %>
+  <div class="alert alert-success">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+<section class="h-100 h-custom" style="background-color: #dee1e0">
   <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100" style="    margin-top: 80px;">
+    <div class="row d-flex justify-content-center align-items-center h-100" style="margin-top: 2px;">
       <div class="col-lg-8 col-xl-6" style="display: flex;
       justify-content: center;">
-        <div class="card rounded-3" style="width: 500px;">
-          <% if @book.pdf.attached? %>
-            <%= image_tag url_for(@book.front_page),
-            class: "w-100", id: "clickable-image",
-            style: "border-top-left-radius: .3rem; border-top-right-radius: .3rem;height: 350px;",
-            alt: "Sample photo" %>
-          <!-- </img> -->
-
-          <iframe id="pdf-iframe" width="100%" height="400"></iframe>
-
-          <script>
-            var pdfIframe = document.getElementById('pdf-iframe');
-            var imageElement = document.getElementById('clickable-image');
-            pdfIframe.style.display = 'none';
-            imageElement.addEventListener('click', function() {
-              // Set the PDF source and make the iframe visible when the image is clicked.
-              var pdfSrc = "<%= rails_blob_path(@book.pdf, disposition: 'inline') %>";
-              pdfIframe.src = pdfSrc;
-              pdfIframe.style.display = 'block';
-              imageElement.style.display = 'none';
-            });
-          </script>
-          <!-- <%# end %> -->
-          <% else %>
-          <p>No PDF file attached</p>
-          <% end %>
-
-          <div class="card-body p-1 p-md-3" style="margin-left: 48px;">
+        <div class="card rounded-3" style="width: 480px;">
+              <% if @book.pdf.attached? %>
+                <%= image_tag url_for(@book.front_page),
+                class: "w-100", id: "clickable-image",
+                alt: "Sample photo", style: "border: 4px solid;color: #cfc3c3; height: 300px" %>
+              <% else %>
+                <p>No PDF file attached</p>
+              <% end %>
+          <div class="card-body p-1 p-md-3" style="margin-left: 48px;height: 320px;">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-3 px-md-2">Book Detail</h3>
 
             <form class="px-md-2">
@@ -53,8 +39,14 @@
                 </div>
                   <%= form_with(url: "/bookings/", method: :post) do |form| %>
                   <%= form.hidden_field :id , value: @book.id %>
-                  <button type="submit" class="btn btn-warning">Book Now</button>
+                  <!-- <button type="submit" class="btn btn-warning">Book Now</button> -->
                   <% end %>
+
+                  <%= form_with(url: "/bookings/", method: :post, id: "booking-form") do |form| %>
+                    <%= form.hidden_field :id, value: @book.id %>
+                    <button type="submit" class="btn btn-warning inline-button" id="book-now-button", style= "height: 36px;">Add</button>
+                  <% end %>
+
               </form>
 
           </div>

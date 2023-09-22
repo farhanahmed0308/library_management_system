@@ -1,8 +1,5 @@
 
 <%= render "devise/sessions/session_header"%>
-
-
-
 <section class="vh-100" style="background-color: #f4e9e9;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -26,11 +23,11 @@
                   <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
                   <div class="form-outline mb-4">
                     <%= f.label :email, style: "margin-right: 208px"%><br />
-                    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email", style: "border-radius: 4px;" %>
                   </div>
                   <div class="form-outline mb-4">
                     <%= f.label :password, style: "margin-right: 181px" %><br />
-                    <%= f.password_field :password, autocomplete: "current-password" %>
+                    <%= f.password_field :password, autocomplete: "current-password", style: "border-radius: 4px;" %>
                     <!-- <input type="password" id="form2Example27" class="form-control form-control-lg" />
                     <label class="form-label" for="form2Example27">Password</label> -->
                   </div>

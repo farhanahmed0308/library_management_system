@@ -1,0 +1,16 @@
+#searching-style {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; margin-top: 50px;
+}
+#search-box {
+      width: 450px;
+      border-top-left-radius: 30px;
+      border-bottom-left-radius:30px;
+      height: 42px;
+}
+#search-submit {
+    border-top-right-radius: 30px;
+      border-bottom-right-radius:30px; height:42px
+}

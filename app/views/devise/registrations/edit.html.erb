@@ -10,11 +10,11 @@
       <div style="display: flex; flex-direction: column; justify-content: center; align-items: center">
         <div class="form-group">
           <%= f.label :email %><br/>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", style: "width: 320px;" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", style: "width: 320px;border-radius: 6px;" %>
         </div>
-        <div class="field">
+        <div class="field" style="margin-top: 10px;">
           <%= f.label :username %><br />
-          <%= f.text_field :username, autofocus: true, autocomplete: "username", style: "width: 320px;"  %>
+          <%= f.text_field :username, autofocus: true, autocomplete: "username", style: "width: 320px; border-radius: 6px;"  %>
         </div>
       
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -23,27 +23,27 @@
         <div class="row">
           <div class="form-group">
             <%= f.label :password %> <i>(leave if don't want to change)</i><br />
-            <%= f.password_field :password, autocomplete: "new-password", style: "width: 320px;"  %>
+            <%= f.password_field :password, autocomplete: "new-password", style: "width: 320px;border-radius: 6px;"  %>
             <% if @minimum_password_length %>
               <br />
               <em><%= @minimum_password_length %> characters minimum</em>
             <% end %>
           </div>
         </div>
-        <div class="field">
+        <div class="field" style="margin-top: 10px;">
           <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", style: "width: 320px;"  %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", style: "width: 320px;    border-radius: 6px;"  %>
         </div>
       
-        <div class="field">
+        <div class="field" style="margin-top: 10px;">
           <%= f.label :current_password %> <i>(current password)</i><br />
-          <%= f.password_field :current_password, autocomplete: "current-password", style: "width: 320px;"  %>
+          <%= f.password_field :current_password, autocomplete: "current-password", style: "width: 320px;border-radius: 6px;"  %>
         </div>
         <div class="form-group" style="margin-top: 20px;">
           <%= f.file_field :profile_picture %>
         </div>
         <div class="actions" id="registration-action">
-          <%= f.submit "Update", class: "btn btn-outline-danger" %>
+          <%= f.submit "Update", class: "btn btn-success" %>
         </div>
       </div>
     <% end %>
@@ -55,7 +55,8 @@
       <p>you can't delete your account,until return books</p>
       <% end %>
     </div>
-     <%= link_to "Back", :back, class: "btn btn-default" %>
+     <%= link_to "Back", memberprofiles_path, class: "btn btn-default" %>
+     
     </div>
   </div>
 

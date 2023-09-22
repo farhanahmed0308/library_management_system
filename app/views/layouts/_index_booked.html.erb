@@ -5,8 +5,7 @@
             <div class="col-lg-3">
               <div class="card mb-5" style="width: 18rem; margin-left: 20px; margin-top: 30px">
                 <%= link_to book_path(book) do %>
-                <!-- <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH1TkKW8YQyOTi5znTeEnZVTyQBNFB2Mirrw&usqp=CAU" alt="Card image cap"> -->
-                <%= image_tag url_for(book.front_page), class: "card-img-top" %>
+                <%= image_tag url_for(book.front_page), class: "card-img-top", style: "height: 374px;border: 4px solid;color: #cfc3c3;" %>
                 <% end %>
                   <div class="card-body">
                     <h5 class="card-title"><strong>Status: </strong><%= book.status%></h5>

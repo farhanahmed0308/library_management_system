@@ -109,3 +109,130 @@ changes in book.show
                     <button type="submit" class="btn btn-warning" id="book-now-button">reserve</button>
                     <%# end %>
                     <%# end %> -->
+
+
+                    member profile view: 
+                    <%= render "layouts/navbar2" %>
+<div class="container" style="margin-top: 30px;">
+    <div class="row" style="background-color: lightslategrey;margin-bottom: 20px; margin-top: 114px;">
+        <div class="col-4">
+            <div class="card" style="width: 18rem; margin: 40px">
+                <!-- <img src="	https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" class="card-img-top" alt="..."> -->
+                
+                <%= user_profile_link(current_user,height: 288, width: "100%", rounded: false )%> 
+                <!-- HELPER METHOD --> 
+                <div class="card-body">
+                  <h5 class="card-title"><%= current_user.username%></h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <div>
+                   <div class="row border border-dark bg-secondary" style="background-color: white; margin-top: 50px; width: 80%;height: 50px; align-items: center;">
+                    <div class="col-3">Name</div>
+                    <div class="col-9"><%= current_user.username%></div>
+                   </div>
+                   <div class="row border border-dark bg-secondary" style="background-color: white; width: 80%; height: 50px; align-items: center;">
+                    <div class="col-3">E-mail</div>
+                    <div class="col-9"><%= current_user.email%></div>
+                   </div>
+                   <div class="row border border-dark bg-secondary" style="background-color: white; width: 80%; height: 50px; align-items: center;">
+                    <div class="col-3">Phone</div>
+                    <div class="col-9">(+92) 0000000000</div>
+                   </div>
+                   <div class="row border border-dark bg-secondary" style="background-color: white; width: 80%; height: 50px; align-items: center;">
+                    <div class="col-3">Address</div>
+                    <div class="col-9">local in Pakistan</div>
+                   </div>   
+            </div>
+            <div style="display: flex; justify-content: center; margin-right: 149px;">
+                <div class="card" style="width: 18rem; margin: 40px">
+                    <!-- <img src="	https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" class="card-img-top" alt="..."> -->
+                    <h3 style="margin-top: 30px;
+                    margin-left: 20px;">Book Record</h3>
+                    <div class="card-body">
+                      <h5 class="card-title"><a href="/booked_book" style="text-decoration: none; color: #708090 ">Borrowed Books: </a><%= @borrowed_books.count %></h5>
+                      <%= link_to "/reserve_book" do %>
+                      <p class="card-title" style="color: #708090 ;font-size: 16px;"><strong>Reserve books: </strong><%= current_user.reservations.count%></p>
+                      <% end %>
+                      <h5 class="card-title"><a href="/booked_book" style="text-decoration: none; color: #708090 ">over due charge: </a><%= @total_charge %></h5>
+                    </div>
+                </div> 
+                <div class="card" style="width: 18rem; margin: 40px">
+                    <!-- <img src="" class="card-img-top" alt="..."> -->
+                    <div class="card-body">
+                      <h5 class="card-title"><%= current_user.username%></h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    ////----------js for book pdf
+<% if book.pdf.attached? %>
+                <div onclick="showPDF(<%= book.id %>)", id="image-<%= book.id %>">
+                  <%= image_tag url_for(book.front_page),
+                  class: "w-100", id: "clickable-image",
+                  alt: "Sample photo" %>
+                </div>
+              <!-- </img> -->
+              <iframe class="d-none" id="pdf-iframe-<%= book.id %>" width="100%" height="400"></iframe>
+                <script>
+                  function showPDF(id){
+                    $(`#image-${id}`).addClass("d-none")
+                    $(`#pdf-iframe-${id}`).removeClass("d-none")
+                    // $('#pdf-iframe-1').addClass("d-block")
+                    var pdfSrc = "<%= rails_blob_path(book.pdf, disposition: 'inline') %>";
+                    pdf-iframe.src = pdfSrc;
+                    // pdf-iframe.style.display = 'block';
+                  }
+                  // var pdfIframe = document.getElementById('pdf-iframe');
+                  // var imageElement = document.getElementById('clickable-image');
+                  // pdfIframe.style.display = 'none';
+                  // imageElement.addEventListener('click', function() {
+                  //   // Set the PDF source and make the iframe visible when the image is clicked.
+                  //   var pdfSrc = "<%= rails_blob_path(book.pdf, disposition: 'inline') %>";
+                  //   pdfIframe.src = pdfSrc;
+                  //   pdfIframe.style.display = 'block';
+                  //   imageElement.style.display = 'none';
+                  // });
+                 </script>
+              <!-- <%# end %> -->
+              <% else %>
+              <p>No PDF file attached</p>
+              <% end %>
+
+
+
+
+
+       <% if @book.pdf.attached? %>
+                <%= image_tag url_for(@book.front_page),
+                class: "w-100", id: "clickable-image",
+                alt: "Sample photo" %>
+              <!-- </img> -->
+              <iframe id="pdf-iframe" width="100%" height="400"></iframe>
+                <script>
+                  var pdfIframe = document.getElementById('pdf-iframe');
+                  var imageElement = document.getElementById('clickable-image');
+                  pdfIframe.style.display = 'none';
+                  imageElement.addEventListener('click', function() {
+                    // Set the PDF source and make the iframe visible when the image is clicked.
+                    var pdfSrc = "<%= rails_blob_path(@book.pdf, disposition: 'inline') %>";
+                    pdfIframe.src = pdfSrc;
+                    pdfIframe.style.display = 'block';
+                    imageElement.style.display = 'none';
+                  });
+                 </script>
+              <!-- <%# end %> -->
+              <% else %>
+              <p>No PDF file attached</p>
+              <% end %>

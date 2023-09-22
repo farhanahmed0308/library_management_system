@@ -1,59 +1,104 @@
 <%= render "layouts/navbar2" %>
-<div class="container" style="margin-top: 30px;">
-    <div class="row" style="background-color: lightslategrey;margin-bottom: 20px;">
+<div class="container" style="margin-top: 2rem; margin-bottom: 2rem">
+    <div class="row" style="background-color: #eef5fb; border-radius: 30px;margin-bottom: 4rem; height: 36rem;">
         <div class="col-4">
             <div class="card" style="width: 18rem; margin: 40px">
-                <!-- <img src="	https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" class="card-img-top" alt="..."> -->
-                
-                <%= user_profile_link(current_user,height: 288, width: "100%", rounded: false )%> 
                 <!-- HELPER METHOD --> 
+                <%= user_profile_link(current_user,height: 288, width: "100%", rounded: false )%> 
                 <div class="card-body">
-                  <h5 class="card-title"><%= current_user.username%></h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <h5 class="card-title"><strong>Name: </strong><%= current_user.username%></h5>
+                  <% if current_user.has_role?('librarian')%>
+                  <p class="card-title"><strong>Status: </strong>Admin</p>
+                  <% else %>
+                  <p class="card-title"><strong>Status: </strong>Member</p>
+                  <% end %>
                   <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                 </div>
             </div>
         </div>
-        <div class="col-8">
-            <div>
-                   <div class="row border border-dark bg-secondary" style="background-color: white; margin-top: 50px; width: 80%;height: 50px; align-items: center;">
-                    <div class="col-3">Name</div>
-                    <div class="col-9"><%= current_user.username%></div>
-                   </div>
-                   <div class="row border border-dark bg-secondary" style="background-color: white; width: 80%; height: 50px; align-items: center;">
-                    <div class="col-3">E-mail</div>
-                    <div class="col-9"><%= current_user.email%></div>
-                   </div>
-                   <div class="row border border-dark bg-secondary" style="background-color: white; width: 80%; height: 50px; align-items: center;">
-                    <div class="col-3">Phone</div>
-                    <div class="col-9">(+92) 0000000000</div>
-                   </div>
-                   <div class="row border border-dark bg-secondary" style="background-color: white; width: 80%; height: 50px; align-items: center;">
-                    <div class="col-3">Address</div>
-                    <div class="col-9">local in Pakistan</div>
-                   </div>   
+        <div class="col-8" >
+            <div id="admin-col-second" style="height: 7rem;">
+                <div>
+                    <div class="card" id="admin-card-1">
+                        <div class="card-body" id="admin-card-body">
+                            <h5 class="card-text" style="font-size: 16px;"> <a href="/books" style="text-decoration: none; color: #708090 ">Books</a> </h5>
+                            <h5 class="card-text" style="color: #708090;"><%= Book.count %></h5>
+                            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="card" style="width: 250px; height: 92px;border-top-left-radius: 37px;
+                    border-top-right-radius: 37px;">
+                        <!-- <img src="..." class="card-img-top" alt="..."> -->
+                        <div class="card-body" id="admin-card-body">
+                            <% if current_user.has_role?('librarian') %>
+                            <h5 class="card-text" style="font-size: 16px;"> <a href="/user_details" style="text-decoration: none; color: #708090 ">Users</a></h5>
+                            <h5 class="card-text" style="color: #708090;" ><%= User.count %></h5>
+                            <% else %>
+                            <h5 class="card-text" style="font-size: 16px;"> <a href="" style="text-decoration: none; color: #708090 ">Book charges</a></h5>
+                            <h5 class="card-text" style="color: #708090;" >Rs.<%= @total_charge %></h5>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="card" id="admin-card-1">
+                        <!-- <img src="..." class="card-img-top" alt="..."> -->
+                        <div class="card-body" id="admin-card-body">
+                        <h5 class="card-text" style="color: #708090 ;font-size: 16px;">Total borrowed books</h5>
+                        <% if current_user.has_role?('librarian') %>
+                        <h5 class="card-text" style="color: #708090;"><%= Booking.count%></h5>
+                        <% else %>
+                        <h5 class="card-text" style="color: #708090;"><%= current_user.bookings.count%></h5>
+                        <% end %>
+
+                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        </div>           
+
+                    </div>
+                </div>
             </div>
-            <div style="display: flex; justify-content: center; margin-right: 149px;">
-                <div class="card" style="width: 18rem; margin: 40px">
-                    <!-- <img src="	https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" class="card-img-top" alt="..."> -->
-                    <h3 style="margin-top: 30px;
-                    margin-left: 20px;">Book Record</h3>
+            <div id="admin-col-second">
+            <div >
+                <div class="card" style="width: 20rem; margin: 40px">
                     <div class="card-body">
-                      <h5 class="card-title"><a href="/booked_book" style="text-decoration: none; color: #708090 ">Borrowed Books: </a><%= @borrowed_books.count %></h5>
+                        <h3 style="color: #708090">Books Record</h3>
+                      <h5 class="card-text" style="color: #708090 ;font-size: 16px;"><a href="/booked_book" style="text-decoration: none; color: #708090 ">Borrowed Books: </a><%= User.borrowed_books(current_user).count%></h5>
+                      <!-- <p class="card-title" style="color: #708090 ;font-size: 16px;"><strong>Return books: </strong><%# Booking.count - Reservation.count%></p> -->
                       <%= link_to "/reserve_book" do %>
                       <p class="card-title" style="color: #708090 ;font-size: 16px;"><strong>Reserve books: </strong><%= current_user.reservations.count%></p>
+                      <!-- <p class="card-title" style="color: #708090 ;font-size: 16px;"><strong>Over_due_books: </strong><%# current_user.@over_due_bookings.count%></p> -->
                       <% end %>
-                      <h5 class="card-title"><a href="/booked_book" style="text-decoration: none; color: #708090 ">over due charge: </a><%= current_user.balance %></h5>
+                      <% if current_user.has_role?('librarian') %>
+                      <p class="card-title" style="color: #708090 ;font-size: 16px;"><strong>Total borrowed book chrged: </strong>Rs.<%= @total_charge %></p>
+                      <% end %>
+                      <p class="card-title" style="color: #708090 ;font-size: 16px;"><strong>Total_charge: </strong>Rs.<%= current_user.balance + @total_charge %></p>
+
+
+                      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                     </div>
-                </div> 
-                <div class="card" style="width: 18rem; margin: 40px">
-                    <!-- <img src="" class="card-img-top" alt="..."> -->
-                    <div class="card-body">
-                      <h5 class="card-title"><%= current_user.username%></h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div> 
+                </div>
             </div>
+            <div>
+                <div class="card" style="width: 20rem; margin: 40px">
+                    <div class="card-body">
+                        <div>
+                            <p class="card-title" style="color: #708090 ;font-size: 16px;"><strong>Name:  </strong><%= current_user.username %></p>
+                            <p class="card-title" style="color: #708090 ;font-size: 16px;"><strong>Email:  </strong><%= current_user.email %></p>
+                            <p class="card-title" style="color: #708090 ;font-size: 16px;"><strong>Phone:  </strong>(+92) 0000000000</p>
+                            <p class="card-title" style="color: #708090 ;font-size: 16px;"><strong>Address:  </strong>local in Pakistan</p>
+                        </div>
+                        <% if current_user.has_role?('librarian') %>
+                        <h3 style="color: #708090">New Books</h3>
+                        <a href="/books/new" class="btn btn-outline btn-success">Create</a>
+                        <a href="/modify_book" class="btn btn-outline btn-success">modify_book</a>
+
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
 </div>
