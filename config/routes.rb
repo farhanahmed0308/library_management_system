@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'pages/privacy', to: 'pages#privacy'
   get 'pages/benefit', to: 'pages#benefit'
   get 'pages/faq', to: 'pages#faq'
+  get 'pages/success_stripe', to: 'pages#success_stripe'
   resources :books
   resources :bookings
   # get '/librarians/show_members', to: 'librarians#show_members', as: 'show_members'
@@ -22,5 +23,9 @@ Rails.application.routes.draw do
   post '/reserve', to: 'reservations#reserve'
   get '/reserve_book', to: 'reservations#index'
   get '/modify_book', to: 'books#modify_book'
+  # for stripe
+  # match '/checkout_create', to: 'checkout#create', via: [:get, :post], as: 'checkout_create'
+  post "checkout/create", to: "checkouts#create"
+
 
 end

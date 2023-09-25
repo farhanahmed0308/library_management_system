@@ -73,10 +73,10 @@
                       <% if current_user.has_role?('librarian') %>
                       <p class="card-title" style="color: #708090 ;font-size: 16px;"><strong>Total borrowed book chrged: </strong>Rs.<%= @total_charge %></p>
                       <% end %>
-                      <p class="card-title" style="color: #708090 ;font-size: 16px;"><strong>Total_charge: </strong>Rs.<%= current_user.balance + @total_charge %></p>
-
-
-                      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                      <p class="card-title" style="color: #708090 ;font-size: 16px;"><strong>Total_charge: </strong>USD<%= calculate %></p>
+                      <%= button_to checkout_create_path, remote: true,  data: {turbo: false}, class: "btn btn-danger" do %>
+                        Checkout Now
+                      <% end %>
                     </div>
                 </div>
             </div>

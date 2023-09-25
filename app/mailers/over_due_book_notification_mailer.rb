@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class OverDueBookNotificationMailer < ApplicationMailer
   def over_due_notify(user)
     @user = user

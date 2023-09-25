@@ -21,6 +21,7 @@ gem 'rolify'
 gem 'pdfjs-rails'
 # for background jobs
 gem 'sidekiq'
+gem 'stripe'
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
 
