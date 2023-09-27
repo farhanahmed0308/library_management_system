@@ -1,9 +1,12 @@
 // section 5
-#section_five_1 {
+.section_five_1 {
     background-color: #f5f5f5;
     display: flex;
     flex-direction: column;
     align-items: center; height: auto;
+}
+#section-5-1{
+    font-size: 28px !important;
 }
 #section_five_card {
     width: 18rem;
@@ -24,10 +27,20 @@
     justify-content: center;
      align-items: center
 }
-#section_four_2 {
+.section_four_2 {
     background: #ffffff76;
     border-top-left-radius: 22px;
     border-bottom-right-radius: 22px;
+}
+.text-four{
+    display: flex; 
+    align-items: center;
+    margin: 20px;
+}
+.section_four_3{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 // section 3
 #section_three_1 {
@@ -44,3 +57,106 @@
     margin-left: 20px;
     margin-right: 21px;
 }
+@media only screen and (max-width: 668px) {
+//    new_header
+    #new_first_row {
+            width: 100% !important;
+            margin-left: 0px !important;
+            margin-right: 0px !important;
+            flex-wrap: wrap;
+    .row{
+        .col-6{
+            width: 100% !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+                    
+        }  
+        
+        #col-6-h{
+           display: none;
+        }  
+        #col-6-p{
+            width: unset;
+            font-size: 12px;
+         }      
+            flex-wrap: wrap !important;
+            flex-direction: column !important;
+            #col-6-new-img{
+            width: 79% !important;
+        }
+    }
+   }
+//    section 2
+.section-2-row{
+    .col-5 {
+            width: 100% !important;
+            height: 182px !important;
+    }
+    .col-5 img {
+            width: 100%;
+            height: 164px !important;
+            width: 226px;
+    }
+     .col-7 {
+            width: 100% !important;
+            margin-top: 20px;
+    }
+    .col-7 p{
+        font-size: 12px !important;
+    }
+}
+//    section 3
+   #section-3-head{
+            font-size: 15px !important;
+   }
+   #section_three_2{
+    font-size: 12px !important;
+   }
+//    section 4
+    #section-four-img{
+            height: 20rem;
+    }
+    .section_four_2{
+            width: 21rem !important;
+    }
+    .section_four_3{
+            width: 21rem !important;
+            #section-three-h{
+            font-size: 11px !important;
+            margin-top: 15px !important;
+        }
+    }
+    .text-four{
+            display: flex; 
+            align-items: center;
+            margin: 1px !important;
+    }   
+    // section 5
+    .card-vertic{
+            display: flex;
+            flex-direction: column;
+    }
+    #section-5-1{
+            font-size: 15px !important;
+    }
+    // 1111
+    .head-111{
+            height: auto !important;
+    }
+    .card-style-111{
+            display: none;
+    }
+    .add-padd{
+            padding: 11px;
+    }
+    #img-1111 {
+            height: 43px !important;
+    }
+    #heading-111 {
+            font-size: 15px;
+            margin-top: 8px;
+    }
+
+  }
