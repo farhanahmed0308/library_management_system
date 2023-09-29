@@ -4,7 +4,8 @@
         <div class="col-4">
             <div class="card" style="width: 18rem; margin: 40px">
                 <!-- HELPER METHOD --> 
-                <%= user_profile_link(current_user,height: 288, width: "100%", rounded: false )%> 
+                <%= user_profile_link(current_user,height: 288, width: "100%", rounded: false, border_radius: "140px",
+                padding: "10px" )%> 
                 <div class="card-body">
                   <h5 class="card-title"><strong>Name: </strong><%= current_user.username%></h5>
                   <% if current_user.has_role?('librarian')%>
@@ -73,7 +74,7 @@
                       <% if current_user.has_role?('librarian') %>
                       <p class="card-title" style="color: #708090 ;font-size: 16px;"><strong>Total borrowed book chrged: </strong>Rs.<%= @total_charge %></p>
                       <% end %>
-                      <p class="card-title" style="color: #708090 ;font-size: 16px;"><strong>Total_charge: </strong>USD<%= calculate %></p>
+                      <p class="card-title" style="color: #708090 ;font-size: 16px;"><strong>Total_charge: </strong> $<%= current_user.balance %></p>
                       <%= button_to checkout_create_path, remote: true,  data: {turbo: false}, class: "btn btn-danger" do %>
                         Checkout Now
                       <% end %>
